@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tech_ecommerce_app/screens/login_page.dart';
 import 'package:tech_ecommerce_app/utils/colors.dart';
@@ -22,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 30, top: 50),
+                padding: const EdgeInsets.only(right: 30, top: 70),
                 child: Text(
                   "Find your Gadget",
                   style: GoogleFonts.raleway(
@@ -39,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
                       MaterialPageRoute(builder: (_) => const LoginPage()));
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(left: 50, right: 50, top: 20),
+                  margin: const EdgeInsets.only(left: 50, right: 50, top: 50),
                   width: double.infinity,
                   height: 70,
                   decoration: BoxDecoration(
