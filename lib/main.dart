@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tech_ecommerce_app/screens/basket_page.dart';
+import 'package:tech_ecommerce_app/screens/home_page.dart';
+import 'package:tech_ecommerce_app/screens/single_item.dart';
 import 'package:tech_ecommerce_app/screens/splash_page.dart';
 
 void main() {
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashPage(),
+      home: HomePage(),
     );
   }
 }

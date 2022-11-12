@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tech_ecommerce_app/models/product_model.dart';
 import 'package:tech_ecommerce_app/utils/colors.dart';
 import 'package:tech_ecommerce_app/utils/images.dart';
 import 'package:tech_ecommerce_app/widgets/choosewidget.dart';
@@ -18,12 +19,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List pages = [
-      TabbarCreate(color: Colors.black),
-      TabbarCreate(color: Colors.red),
-      TabbarCreate(color: Colors.blue),
-      TabbarCreate(color: Colors.blue),
+      TabbarCreate(color: Colors.black, models: ProductModel.smartwatches),
+      TabbarCreate(color: Colors.black, models: ProductModel.laptops),
+      TabbarCreate(color: Colors.black, models: ProductModel.laptops),
+      TabbarCreate(color: Colors.black, models: ProductModel.laptops),
     ];
     return Scaffold(
+      backgroundColor: MyColors.cE5E5E5,
       body: SafeArea(
         child: Column(
           children: [
