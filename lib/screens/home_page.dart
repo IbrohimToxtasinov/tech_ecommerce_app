@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tech_ecommerce_app/models/product_model.dart';
+import 'package:tech_ecommerce_app/screens/search_page.dart';
 import 'package:tech_ecommerce_app/utils/colors.dart';
 import 'package:tech_ecommerce_app/utils/images.dart';
 import 'package:tech_ecommerce_app/widgets/choosewidget.dart';
@@ -39,22 +40,27 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SvgPicture.asset(MyImages.iconMenu),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    width: 267,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: MyColors.cFFFFFF,
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(width: 2, color: MyColors.cC9C9C9)
-                    ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(MyImages.iconSearch),
-                          const SizedBox(width: 15),
-                          Text("Search", style: GoogleFonts.raleway(fontSize: 17, fontWeight: FontWeight.w600, color: MyColors.c868686),)
-                        ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => SearchPage(products: [],)));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      width: 267,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: MyColors.cE5E5E5,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(width: 2, color: MyColors.cC9C9C9)
+                      ),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(MyImages.iconSearch),
+                            const SizedBox(width: 15),
+                            Text("Search", style: GoogleFonts.raleway(fontSize: 17, fontWeight: FontWeight.w600, color: MyColors.c868686),)
+                          ],
+                        ),
                       ),
                     ),
                   ),

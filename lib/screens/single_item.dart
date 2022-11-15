@@ -37,7 +37,7 @@ class _SingleItemState extends State<SingleItem> {
           Image.asset(
             widget.getData.imageName,
             width: double.infinity,
-            height: 250,
+            height: 243,
           ),
           Expanded(
             child: Container(
@@ -140,30 +140,15 @@ class _SingleItemState extends State<SingleItem> {
                       ),
                     ),
                     const SizedBox(height: 32),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 50, left: 10, bottom: 30),
-                        child: InkWell(
-                          onTap: () {
-                            widget.getData.count++;
-                            myCart.add(widget.getData);
-                            Navigator.push(context, MaterialPageRoute(builder: (_) => CartPage()));
-                          },
-                          child: Container(
-                            height: 70,
-                            decoration: BoxDecoration(
-                              color: MyColors.c5956E9,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                                child: Text("Add to Basket",
-                                    style: GoogleFonts.raleway(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700, 
-                                        color: MyColors.cFFFFFF))),
-                          ),
-                        ),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 50, left: 10, bottom: 30),
+                      child: button(context, 
+                        name: "Add to basket",
+                        onTap: () {
+                          widget.getData.count++;
+                          myCart.add(widget.getData);
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => CartPage()));
+                        },)
                     ),
                   ],
                 ),

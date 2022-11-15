@@ -3,6 +3,7 @@ import 'package:tech_ecommerce_app/screens/basket_page.dart';
 import 'package:tech_ecommerce_app/screens/home_page.dart';
 import 'package:tech_ecommerce_app/screens/single_item.dart';
 import 'package:tech_ecommerce_app/screens/splash_page.dart';
+import 'package:tech_ecommerce_app/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       home: HomePage(),
     );

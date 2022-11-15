@@ -17,6 +17,12 @@ class ProductModel {
   );
 
   //Smart Watches
+  static final all_products = [
+    ProductModel.smartwatches,
+    ProductModel.drones,
+    ProductModel.laptops,
+    ProductModel.phones,
+  ];
   static final smartwatches = [
     ProductModel(
       name: "Apple Watch",
@@ -73,12 +79,6 @@ class ProductModel {
   ];
   //Phones
   static final phones = [
-    ProductModel(
-      name: "Samsung", 
-      imageName: MyImages.imagesSmartWatch1, 
-      desription: "RAM 8, SSD 256", 
-      price: 800
-    ),
   ];
   //Drones
   static final drones = [

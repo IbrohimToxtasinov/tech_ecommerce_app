@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tech_ecommerce_app/utils/colors.dart';
 
-Widget buildbuttonWidget(BuildContext context, {buttonname, color, textcolor, pagename}) {
+Widget buildbuttonWidget(BuildContext context,
+    {buttonname, color, textcolor, pagename}) {
   return InkWell(
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (_) => pagename));
@@ -53,6 +54,29 @@ Widget buildcolorsbutton(BuildContext context, {name, colorName}) {
               color: MyColors.c000000),
         )
       ],
+    ),
+  );
+}
+
+Widget button(BuildContext context, {name, required VoidCallback onTap}) {
+  return InkWell(
+    onTap: () {
+      onTap();
+    },
+    child: Container(
+      width: double.infinity,
+      height: 70,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: MyColors.c5956E9,
+      ),
+      child: Center(
+        child: Text(
+          name,
+          style: GoogleFonts.raleway(
+              fontSize: 20, fontWeight: FontWeight.w700, color: MyColors.cFFFFFF),
+        ),
+      ),
     ),
   );
 }
