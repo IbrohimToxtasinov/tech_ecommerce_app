@@ -74,62 +74,58 @@ class _SearchPageState extends State<SearchPage> {
           const SizedBox(height: 20),
           widget.searched!.isEmpty
               ? const Expanded(child: Icon(Icons.file_copy))
-              : Column(
-                children: [
-                  Expanded(
-                      child: Padding(
-                      padding: const EdgeInsets.only(left: 33, right: 33),
-                      child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 35,
-                                mainAxisSpacing: 56,
-                                childAspectRatio: 0.75),
-                        itemCount: widget.searched!.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: MyColors.cFFFFFF,
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: 117,
-                                  height: 95,
-                                  child: Stack(
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Positioned(
-                                        top: -40,
-                                        child: SizedBox(
-                                          width: 117,
-                                          height: 156,
-                                          child: Image.asset(
-                                            widget.searched![index].imageName,
-                                          ),
-                                        ),
+              : Expanded(
+                  child: Padding(
+                  padding: const EdgeInsets.only(left: 33, right: 33),
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 35,
+                            mainAxisSpacing: 56,
+                            childAspectRatio: 0.75),
+                    itemCount: widget.searched!.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: MyColors.cFFFFFF,
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: 117,
+                              height: 95,
+                              child: Stack(
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Positioned(
+                                    top: -40,
+                                    child: SizedBox(
+                                      width: 117,
+                                      height: 156,
+                                      child: Image.asset(
+                                        widget.searched![index].imageName,
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(height: 10),
-                                SizedBox(
-                                  width: 110,
-                                  child: Text(widget.searched![index].name,style:  GoogleFonts.raleway(fontSize: 22, fontWeight: FontWeight.w600, color: MyColors.c000000, height: 1), textAlign: TextAlign.center)),
-                                const SizedBox(height: 7),
-                                Text("From £${widget.searched![index].price}",style:  GoogleFonts.raleway(fontSize: 17, fontWeight: FontWeight.w700, color: MyColors.c5956E9), textAlign: TextAlign.center)
-                              ],
+                                ],
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    )),
-                ],
-              ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: 110,
+                              child: Text(widget.searched![index].name,style:  GoogleFonts.raleway(fontSize: 22, fontWeight: FontWeight.w600, color: MyColors.c000000, height: 1), textAlign: TextAlign.center)),
+                            const SizedBox(height: 7),
+                            Text("From £${widget.searched![index].price}",style:  GoogleFonts.raleway(fontSize: 17, fontWeight: FontWeight.w700, color: MyColors.c5956E9), textAlign: TextAlign.center)
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                )),
         ],
       ),
     );
