@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tech_ecommerce_app/models/product_model.dart';
+import 'package:tech_ecommerce_app/screens/forgot_password.dart';
 import 'package:tech_ecommerce_app/utils/colors.dart';
 import 'package:tech_ecommerce_app/utils/images.dart';
 
@@ -11,7 +12,8 @@ import 'package:tech_ecommerce_app/utils/images.dart';
 class SearchPage extends StatefulWidget {
   List<ProductModel>? products = [];
   List<ProductModel>? searched = [];
-  bool ishas = true;
+  List<ProductModel>? notSearched = [];
+  bool isHas = false;
   SearchPage({super.key, required this.products});
 
   @override
@@ -61,9 +63,14 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     onChanged: (value) {
                       setState(() {
-                        value.isEmpty 
-                          ? widget.searched = []
-                          : widget.searched = searcheds(value, widget.products);
+                      
+                        if(value.isEmpty){
+                          widget.isHas =false;
+                        }
+                        else {
+                          widget.isHas = true;
+                          widget.searched = searcheds(value, widget.products);
+                        }
                       });
                     },
                   ),
@@ -72,60 +79,139 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           const SizedBox(height: 20),
-          widget.searched!.isEmpty
-              ? const Expanded(child: Icon(Icons.file_copy))
-              : Expanded(
-                  child: Padding(
-                  padding: const EdgeInsets.only(left: 33, right: 33),
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 35,
-                            mainAxisSpacing: 56,
-                            childAspectRatio: 0.75),
-                    itemCount: widget.searched!.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: MyColors.cFFFFFF,
-                        ),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: 117,
-                              height: 95,
-                              child: Stack(
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Positioned(
-                                    top: -40,
-                                    child: SizedBox(
-                                      width: 117,
-                                      height: 156,
-                                      child: Image.asset(
-                                        widget.searched![index].imageName,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+          widget.isHas
+            ? widget.searched!.isEmpty
+                  ? const Expanded(
+                      child: Center(
+                      child: Icon(Icons.file_copy),
+                    ))
+                  : Expanded(
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 33, right: 33),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 35,
+                                mainAxisSpacing: 56,
+                                childAspectRatio: 0.75),
+                        itemCount: widget.searched!.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: MyColors.cFFFFFF,
                             ),
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              width: 110,
-                              child: Text(widget.searched![index].name,style:  GoogleFonts.raleway(fontSize: 22, fontWeight: FontWeight.w600, color: MyColors.c000000, height: 1), textAlign: TextAlign.center)),
-                            const SizedBox(height: 7),
-                            Text("From £${widget.searched![index].price}",style:  GoogleFonts.raleway(fontSize: 17, fontWeight: FontWeight.w700, color: MyColors.c5956E9), textAlign: TextAlign.center)
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                )),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: 117,
+                                  height: 95,
+                                  child: Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Positioned(
+                                        top: -40,
+                                        child: SizedBox(
+                                          width: 117,
+                                          height: 156,
+                                          child: Image.asset(
+                                            widget.searched![index].imageName,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                    width: 110,
+                                    child: Text(widget.searched![index].name,
+                                        style: GoogleFonts.raleway(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w600,
+                                            color: MyColors.c000000,
+                                            height: 1),
+                                        textAlign: TextAlign.center)),
+                                const SizedBox(height: 7),
+                                Text("From £${widget.searched![index].price}",
+                                    style: GoogleFonts.raleway(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w700,
+                                        color: MyColors.c5956E9),
+                                    textAlign: TextAlign.center)
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ))
+          : Expanded(
+                      child: Container(
+                        color: Colors.redAccent,
+                      padding: const EdgeInsets.only(left: 33, right: 33),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 35,
+                                mainAxisSpacing: 56,
+                                childAspectRatio: 0.75),
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: MyColors.cFFFFFF,
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: 117,
+                                  height: 95,
+                                  child: Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Positioned(
+                                        top: -40,
+                                        child: SizedBox(
+                                          width: 117,
+                                          height: 156,
+                                          child: Image.asset(
+                                            widget.notSearched![index].imageName,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                    width: 110,
+                                    child: Text(widget.notSearched![index].name,
+                                        style: GoogleFonts.raleway(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w600,
+                                            color: MyColors.c000000,
+                                            height: 1),
+                                        textAlign: TextAlign.center)),
+                                const SizedBox(height: 7),
+                                Text("From £${widget.notSearched![index].price}",
+                                    style: GoogleFonts.raleway(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w700,
+                                        color: MyColors.c5956E9),
+                                    textAlign: TextAlign.center)
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    )) 
         ],
       ),
     );
@@ -133,13 +219,23 @@ class _SearchPageState extends State<SearchPage> {
 }
 
 List<ProductModel> searcheds(
-    String nameOfProduct, List<ProductModel>? database) {
+    String nameOfProduct, List<ProductModel>? database,) {
   List<ProductModel> foundProducts = [];
   for (var i in ProductModel.all_products) {
     for (var j in i) {
       if (j.name.toLowerCase().contains(nameOfProduct.toLowerCase())) {
         foundProducts.add(j);
       }
+    }
+  }
+  return foundProducts;
+}
+
+List<ProductModel> notSearcheds(List<ProductModel>? database) {
+  List<ProductModel> foundProducts = [];
+  for (var i in ProductModel.all_products) {
+    for (var j in i) {
+      foundProducts.add(j);
     }
   }
   return foundProducts;
