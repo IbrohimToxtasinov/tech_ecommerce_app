@@ -134,11 +134,3 @@ class TabbarCreate extends StatelessWidget {
   }
 }
 
-/*
-Container(
-              width: 220,
-              height: 270,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.red,
-*/
