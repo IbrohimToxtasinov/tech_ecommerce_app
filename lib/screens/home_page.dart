@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               physics: const BouncingScrollPhysics(),
-              child: SizedBox( 
+              child: SizedBox(
                 height: 430,
                 width: double.infinity,
                 child: pages[selectedIndex],
